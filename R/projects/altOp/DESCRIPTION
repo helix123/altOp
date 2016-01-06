@@ -1,0 +1,25 @@
+Package: altOp
+Title: Easily Generate a Set of Formulas with Alternative Operationalizations of
+    Variables
+Version: 0.0.1
+Authors@R: c(
+              person("Kevin", "Tappe", email = "kevin.tappe@bwi.uni-stuttgart.de", role = c("aut", "cre")),
+              person("Tobias", "Pohl", email = "TODO@example.com", role = c("aut"))
+            )
+Description: TODO more here; RHS sollte vorkommen; Robustness check kann
+    mehrere bedeutungen haben, eine davon die operationalisierung von Variablen e.g.
+    firm size is often operationalized as one or more of the following: number of
+    employees, log(market capitalization), total assets
+Depends:
+    R (>= 3.1.0)
+License: GPL2
+LazyData: true
+Suggests:
+    broom,
+    stargazer,
+    texreg,
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 5.0.1
+VignetteBuilder: knitr
