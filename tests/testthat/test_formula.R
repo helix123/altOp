@@ -69,7 +69,11 @@ test_that("Respect removal of constant term", {
   res_form2 <- sub_vars_rhs_one2one(form2, "emp", "marketcap")
   res_form3 <- sub_vars_rhs_one2one(form3, "emp", "marketcap")
 
+  expect_equal(attr(terms(res_form1), "intercept"), 0)
+  expect_equal(attr(terms(res_form2), "intercept"), 0)
+  expect_equal(attr(terms(res_form3), "intercept"), 0)
 
+  ## maybe, the tests should not require preserving the exact position of removal of constant?
   expect_equal(res_form1,
                formula(compvar ~ roa + marketcap + beta + age + tenure - 1))
   expect_equal(res_form2,
