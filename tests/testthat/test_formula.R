@@ -53,3 +53,27 @@ test_that("LHS shall be preserved when variable is substituted (on RHS)", {
                formula(log(compvar) ~ roa + marketcap + beta + age + tenure))
 })
 
+
+
+# form <- formula(compvar ~ 0 + roa + emp + beta + age + tenure)
+#
+# all.vars(form) # does not contain constant
+# attr(terms(form), "intercept") # indicates whether constant is present in a formula
+
+test_that("Respect removal of constant term", {
+  form1 <- formula(compvar ~ roa + emp + beta + age + tenure - 1)
+  form2 <- formula(compvar ~ roa + emp + beta + age + tenure + 0)
+  form3 <- formula(compvar ~ 0 + roa + emp + beta + age + tenure)
+
+  res_form1 <- sub_vars_rhs_one2one(form1, "emp", "marketcap")
+  res_form2 <- sub_vars_rhs_one2one(form2, "emp", "marketcap")
+  res_form3 <- sub_vars_rhs_one2one(form3, "emp", "marketcap")
+
+
+  expect_equal(res_form1,
+               formula(compvar ~ roa + marketcap + beta + age + tenure - 1))
+  expect_equal(res_form2,
+               formula(compvar ~ roa + marketcap + beta + age + tenure + 0))
+  expect_equal(res_form3,
+               formula(compvar ~ 0 + roa + marketcap + beta + age + tenure))
+})
