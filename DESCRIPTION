@@ -4,7 +4,7 @@ Title: Easily Generate a Set of Formulas with Alternative Operationalizations of
 Version: 0.0.1
 Authors@R: c(
               person("Kevin", "Tappe", email = "kevin.tappe@bwi.uni-stuttgart.de", role = c("aut", "cre")),
-              person("Tobias", "Pohl", email = "TODO@example.com", role = c("aut"))
+              person("Tobias", "Pohl", email = "tobias_pohl@gmx.de", role = c("aut"))
             )
 Description: TODO more here. RHS sollte vorkommen. Robustness check kann
     mehrere bedeutungen haben, eine davon die operationalisierung von Variablen e.g.

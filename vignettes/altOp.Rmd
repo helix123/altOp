@@ -1,7 +1,7 @@
 ---
 title: "altOp Vignette"
 author: "Kevin Tappe"
-date: "`r Sys.Date()`"
+date: "2016-01-16"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{altOp Vignette}
