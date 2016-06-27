@@ -1,16 +1,19 @@
 ---
 title: "altOp Vignette"
-author: "Kevin Tappe"
-date: "2016-01-16"
+author: "Kevin Tappe, Tobias Pohl"
+date: "2016-06-15"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{altOp Vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\documentclass{amsart}
 ---
 
 
 TODO: intro text to package `altOp`
+
+See for further details e. g. Babbie, Earl R. (2016), The Practice of Social Research, chapter 5 ("Conceptualization, Operationalization, and Measurement")
 
 We will use the dataset `CEOcomp` with data on CEO compensation in this vignette to illustrate the package's function. This dataset is part of the package. Here are the first 5 rows of `CEOComp` to give you an idea what the data looks like.
 ```{r, echo=FALSE, results='asis'}
@@ -60,14 +63,14 @@ ex1_depVar <- c("compvar") # dependend variable
 ex1_opList <- list(c("roa", "roe", "tsr")) # various operationalizations of firm performance
 ex1_fixVars <- c("emp", "marketcap") # fixed variables (to appear in all formulae)
 
-ex1_all_formulae <- generiere_alle_formeln(abhVar = ex1_depVar,
-                                           opList = ex1_opList,
-                                           festVar = ex1_fixVars)
+# ex1_all_formulae <- generiere_alle_formeln(abhVar = ex1_depVar,
+#                                            opList = ex1_opList,
+#                                            festVar = ex1_fixVars)
 
-print(ex1_all_formulae)
+#print(ex1_all_formulae)
 
 ```
-This returns a list with 3 different formulae, because there are 3 different operationalisations for 1 varibale (firm performance).
+This returns a list with 3 different formulae, because there are 3 different operationalizations for 1 variable (firm performance).
 
 
 
@@ -81,13 +84,15 @@ ex2_depVar <- c("compvar") # dependend variable
 ex2_opList <- list(c("roa", "roe", "tsr"), c("marketcap", "emp")) # various operationalizations for firm perf. and firm size
 ex2_fixVars <- c("beta") # fixed variables (to appear in all formulae)
 
-ex2_all_formulae <- generiere_alle_formeln(abhVar = ex2_depVar,
-                                           opList = ex2_opList,
-                                           festVar = ex2_fixVars)
+# ex2_all_formulae <- generiere_alle_formeln(abhVar = ex2_depVar,
+#                                            opList = ex2_opList,
+#                                            festVar = ex2_fixVars)
 
-print(ex2_all_formulae)
+#print(ex2_all_formulae)
 ```
-This returns a list with 6 different formulae, because there are 3 different operationalisations for firm performance and 2 different operationalizations for firm size (6 = 3 * 2).
+This returns a list with 6 different formulae, because there are 3 different operationalizations for firm performance and 2 different operationalizations for firm size (6 = 3 * 2).
 
-TODO: note down general formula
+
+
+TODO: auch kurz, wie die LHS ersetzt wird (update.formula())
 
