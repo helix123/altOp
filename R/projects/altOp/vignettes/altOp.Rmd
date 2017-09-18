@@ -1,0 +1,93 @@
+---
+title: "altOp Vignette"
+author: "Kevin Tappe"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{altOp Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+TODO: intro text to package `altOp`
+
+We will use the dataset `CEOcomp` with data on CEO compensation in this vignette to illustrate the package's function. This dataset is part of the package. Here are the first 5 rows of `CEOComp` to give you an idea what the data looks like.
+```{r, echo=FALSE, results='asis'}
+library(altOp)
+data(CEOcomp)
+knitr::kable(head(CEOcomp, 5))
+```
+
+
+## altOp in combination with package 'broom'
+
+  The package `broom`  is a package for ..TODO short explanation ...
+  `altOp` is particularly useful in combination with some other packages such as broom.
+
+  # allFormulas <- # TODO: list mit formulas generiert mit unseren Befehlen
+  allFormulas <- list(form, form2, form3)
+
+  # estimate all models specified by the various formulae
+  allModels <- lapply(allFormulas, function(form) lm(form, data=CEOcomp))
+
+  # save all tidied model results as list of data.frames
+  library(broom)
+  allModelResults <- lapply(allModels, function(mod) broom::tidy(mod))
+
+  # TODO:
+  #    * Place examples here how to rbind all the data.frames together in a useful format [variable estimates, t- and p-value in columns] (code is with KT) (maybe develop new way with dplyr?)
+  #    * Also support row-wise format (like tidy format, but data is not "tidy" anymore)? Introduce column with model number and formula
+
+
+## altOp in combination with stargazer and/or texreg
+  library(stargazer)
+  # TODO: fertigstellen: stargazer(allModels, type="text")
+
+  library(texreg)
+  ## TODO texreg(TODO)
+
+  #TODO: Pixiedust?
+  #TODO: sjPlot?
+
+
+
+## Generate all formulae
+### Example 1:
+```{r}
+# TODO: adapt parameters, function name etc., once the function is ready
+ex1_depVar <- c("compvar") # dependend variable
+ex1_opList <- list(c("roa", "roe", "tsr")) # various operationalizations of firm performance
+ex1_fixVars <- c("emp", "marketcap") # fixed variables (to appear in all formulae)
+
+ex1_all_formulae <- generiere_alle_formeln(abhVar = ex1_depVar,
+                                           opList = ex1_opList,
+                                           festVar = ex1_fixVars)
+
+print(ex1_all_formulae)
+
+```
+This returns a list with 3 different formulae, because there are 3 different operationalisations for 1 varibale (firm performance).
+
+
+
+
+### Example 2:
+
+```{r}
+# TODO: adapt parameters, function name etc., once the function is ready
+
+ex2_depVar <- c("compvar") # dependend variable
+ex2_opList <- list(c("roa", "roe", "tsr"), c("marketcap", "emp")) # various operationalizations for firm perf. and firm size
+ex2_fixVars <- c("beta") # fixed variables (to appear in all formulae)
+
+ex2_all_formulae <- generiere_alle_formeln(abhVar = ex2_depVar,
+                                           opList = ex2_opList,
+                                           festVar = ex2_fixVars)
+
+print(ex2_all_formulae)
+```
+This returns a list with 6 different formulae, because there are 3 different operationalisations for firm performance and 2 different operationalizations for firm size (6 = 3 * 2).
+
+TODO: note down general formula
+
